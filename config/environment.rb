@@ -20,5 +20,11 @@ SQL
 DB[:conn].execute(sql)
 
 #when SELECT statement is executed don't return a database row as an array, 
-#return it as has with column names as keys
+#return it as hash with column names as keys
 DB[:conn].results_as_hash = true
+
+
+# example from .results_as_hash: DB[:conn].execute("SELECT * FROM songs LIMIT 1")
+# returns not [[1, "Hello", "25"] but {'id'=>1, 'name'=>"Hello", 'album'=>"25", 0 => 1, 1 => "Hello", 2 => "25"}
+
+

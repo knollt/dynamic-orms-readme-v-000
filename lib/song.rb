@@ -27,13 +27,13 @@ class Song
 
   # iterate of column names stored in column_names class method & 
   # set an attr_accessor for each one
-  self.column_names.each do |col_name| 
+  def self.column_names.each do |col_name| 
     attr_accessor col_name.to_sym
   end
 
 
   #STEP 3 
-  #builing an abstract initialize method
+  #building an abstract initialize method
 
   def initialize(options={})  #method take in an agrument options = empty hash
     options.each do |property, value|
@@ -83,7 +83,7 @@ class Song
   end
 
 
-#select rocords 
+#select records 
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
